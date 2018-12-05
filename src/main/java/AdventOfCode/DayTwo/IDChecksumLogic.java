@@ -95,4 +95,22 @@ public class IDChecksumLogic {
         }
         return possibleBoxes;
     }
+
+    public String charsInCommon(String string) {
+        String str1 = possibleBoxes(string).get(0);
+        String str2 = possibleBoxes(string).get(1);
+        List<Character> charsInCommon = new ArrayList<>();
+        int i = 0;
+
+        while (i <= str1.length() - 1) {
+            if (str1.charAt(i) == str2.charAt(i)) {
+                charsInCommon.add(str1.charAt(i));
+                i++;
+            } else {
+                i++;
+            }
+        }
+        return charsInCommon.toString();
+    }
+
 }

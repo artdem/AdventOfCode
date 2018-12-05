@@ -257,6 +257,7 @@ public class IDChecksum {
         IDChecksumLogic idChecksumLogic = new IDChecksumLogic();
         System.out.println(idChecksumLogic.idsChecksum(string));
         System.out.println(idChecksumLogic.possibleBoxes(string));
+        System.out.println(idChecksumLogic.charsInCommon(string).replaceAll(", ", ""));
 
     }
 }
