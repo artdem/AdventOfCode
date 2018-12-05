@@ -1,9 +1,8 @@
 package AdventOfCode.DayTwo;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import com.sun.deploy.util.StringUtils;
+
+import java.util.*;
 
 public class IDChecksumLogic {
 
@@ -32,7 +31,7 @@ public class IDChecksumLogic {
                     charMapDoubles.put(ch, 1);
                 }
             }
-            if (charMapDoubles.containsValue(2)){
+            if (charMapDoubles.containsValue(2)) {
                 idsWithDoubles.add(inputString);
             }
         }
@@ -55,7 +54,7 @@ public class IDChecksumLogic {
                     charMapTriples.put(ch, 1);
                 }
             }
-            if (charMapTriples.containsValue(3)){
+            if (charMapTriples.containsValue(3)) {
                 idsWithTriples.add(inputString);
             }
         }
@@ -69,5 +68,31 @@ public class IDChecksumLogic {
         return doubles.size() * triples.size();
     }
 
+    public int stringDistance(String str1, String str2) {
+        int i = 0;
+        int count = 0;
+        while (i <= str1.length() - 1) {
+            if (str1.charAt(i) != str2.charAt(i)) {
+                count++;
+                i++;
+            }
+            i++;
+        }
+        return count;
+    }
 
+    public List<String> possibleBoxes(String string) {
+        List<String> inputBoxes = stringSplitter(string);
+        List<String> possibleBoxes = new ArrayList<>();
+
+        for (String str : inputBoxes) {
+            Iterator<String> inputBoxesIterator = inputBoxes.iterator();
+            while (inputBoxesIterator.hasNext()) {
+                if (stringDistance(str, inputBoxesIterator.next()) == 1) {
+                    possibleBoxes.add(str);
+                }
+            }
+        }
+        return possibleBoxes;
+    }
 }

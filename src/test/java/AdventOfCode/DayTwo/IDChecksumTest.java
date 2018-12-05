@@ -79,7 +79,39 @@ public class IDChecksumTest {
 
         //then
         Assert.assertTrue(idChecksumLogic.idsChecksum(string) == 12);
-
     }
+
+    @Test
+    public void stringDistanceTest(){
+        //given
+        String str1 = "fghij";
+        String str2 = "fguij";
+
+        //when
+        int i = idChecksumLogic.stringDistance(str1, str2);
+
+        //then
+        Assert.assertTrue(i == 1);
+    }
+
+    @Test
+    public void possibleBoxesTest(){
+        //given
+        String string = "abcde\n" +
+                "fghij\n" +
+                "klmno\n" +
+                "pqrst\n" +
+                "fguij\n" +
+                "axcye\n" +
+                "wvxyz";
+
+        //when
+        idChecksumLogic.possibleBoxes(string);
+
+        //then
+        Assert.assertTrue(idChecksumLogic.possibleBoxes(string).size() == 2);
+    }
+
+
 
 }
